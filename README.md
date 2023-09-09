@@ -2,6 +2,10 @@
 
 We will be making the backend to an ecommerce website that sells bats. We want users to have permissions based on if they are customers or admin. Customers should have a recenly purchased tab and we want admins to adjust product stock that lives in a database. As a stretch we would like to use socket.io to have a virtual assistant and the website could hold customer carts.
 
+## UML
+
+<img src='./assets/ecommBackendUml.png' />
+
 ## Our Team
 
 Raymond Ruazol - Lacey Washington - Rhett Beardemphl
