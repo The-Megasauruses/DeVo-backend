@@ -32,6 +32,17 @@ We will be making the backend to an ecommerce website that sells a variety of pr
     - I can view incoming orders and mark them as shipped or completed.
     - STRETCH: I can generate packing slips and shipping labels.
 
+## Feature Tasks
+
+- Install LoopBack Server
+- Set up Authentication
+- Make Schemas
+- Connect users and products to orders
+- Create protected routes
+- Setup PostgreSQL Database
+- Connect PostgreSQL database to LoopBack Server
+- Deployment
+
 ## UML
 
 <img src='./assets/ecommBackendUml.png'/>
