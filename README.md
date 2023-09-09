@@ -32,6 +32,10 @@ We will be making the backend to an ecommerce website that sells a variety of pr
     - I can view incoming orders and mark them as shipped or completed.
     - STRETCH: I can generate packing slips and shipping labels.
 
+## UML
+
+<img src='./assets/ecommBackendUml.png'/>
+
 ## Our Team
 
 Raymond Ruazol - Lacey Washington - Rhett Beardemphl
