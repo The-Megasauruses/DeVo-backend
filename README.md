@@ -4,7 +4,7 @@ We will be making the backend to an ecommerce website that sells bats. We want u
 
 ## UML
 
-<img src='./assets/ecommBackendUml.png' />
+<img src='./assets/ecommBackendUml.png'/>
 
 ## Our Team
 
