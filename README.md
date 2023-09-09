@@ -43,6 +43,11 @@ We will be making the backend to an ecommerce website that sells a variety of pr
 - Connect PostgreSQL database to LoopBack Server
 - Deployment
 
+## Acceptance Tests
+
+- Verify that users can successfully register by providing valid information
+- As an admin, add a new product and verify its details are correctly displayed on the website
+
 ## UML
 
 <img src='./assets/ecommBackendUml.png'/>
