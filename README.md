@@ -1,6 +1,56 @@
-# DeVo-backend
+# Ecomm-backend
 
-We will be making the backend to an ecommerce website that sells bats. We want users to have permissions based on if they are customers or admin. Customers should have a recenly purchased tab and we want admins to adjust product stock that lives in a database. As a stretch we would like to use socket.io to have a virtual assistant and the website could hold customer carts.
+We will be making the backend to an ecommerce website that sells a variety of products. We want users to have permissions based on if they are customers or admin. Customers should have a recenly purchased tab and we want admins to adjust product stock that lives in a database. As a stretch we would like to use socket.io to have a virtual assistant and the website could hold customer carts.
+
+## User Stories
+
+1. **As a customer, I want to be able to create an account:**
+   - I can provide my name, email address, and password to sign up.
+   - STRETCH: should receive a confirmation email to verify my account.
+
+2. **As a customer, I want to be able to log in to my account:**
+   - I can enter my email and password to access my account.
+   - I should be redirected to my dashboard upon successful login.
+
+3. **As a customer, I want to view product details:**
+   - I can click on a product to see its detailed information, including price, description, and images.
+
+4. **As a customer, I want to view my order history:**
+   - I can see a list of all my past orders with details like order date, status, and items ordered.
+
+5. **As a customer, I want to leave product reviews:**
+    - STRETCH: I can rate and write reviews for products I have purchased.
+  
+6. **As a customer/admin, I want to be able to chat in real time with a specialist/customer:**
+    - STRETCH: real time chat window.
+
+7. **As an admin, I want to manage product listings:**
+   - I can add new products with details such as name, price, description, and images.
+   - I can edit or delete existing product listings.
+
+8. **As an admin, I want to process customer orders:**
+    - I can view incoming orders and mark them as shipped or completed.
+    - STRETCH: I can generate packing slips and shipping labels.
+
+## Feature Tasks
+
+- Install LoopBack Server
+- Set up Authentication
+- Make Schemas
+- Connect users and products to orders
+- Create protected routes
+- Setup PostgreSQL Database
+- Connect PostgreSQL database to LoopBack Server
+- Deployment
+
+## Acceptance Tests
+
+- Verify that users can successfully register by providing valid information
+- As an admin, add a new product and verify its details are correctly displayed on the website
+
+## UML
+
+<img src='./assets/ecommBackendUml.png'/>
 
 ## Our Team
 
