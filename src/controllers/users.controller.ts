@@ -23,7 +23,7 @@ import {UsersRepository} from '../repositories';
 export class UsersController {
   constructor(
     @repository(UsersRepository)
-    public usersRepository : UsersRepository,
+    public usersRepository: UsersRepository,
   ) {}
 
   @post('/users')
@@ -52,9 +52,7 @@ export class UsersController {
     description: 'Users model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Users) where?: Where<Users>,
-  ): Promise<Count> {
+  async count(@param.where(Users) where?: Where<Users>): Promise<Count> {
     return this.usersRepository.count(where);
   }
 
@@ -70,9 +68,7 @@ export class UsersController {
       },
     },
   })
-  async find(
-    @param.filter(Users) filter?: Filter<Users>,
-  ): Promise<Users[]> {
+  async find(@param.filter(Users) filter?: Filter<Users>): Promise<Users[]> {
     return this.usersRepository.find(filter);
   }
 
@@ -105,8 +101,9 @@ export class UsersController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
-    @param.filter(Users, {exclude: 'where'}) filter?: FilterExcludingWhere<Users>
+    @param.path.string('id') id: number,
+    @param.filter(Users, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Users>,
   ): Promise<Users> {
     return this.usersRepository.findById(id, filter);
   }
@@ -116,7 +113,7 @@ export class UsersController {
     description: 'Users PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +131,7 @@ export class UsersController {
     description: 'Users PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @requestBody() users: Users,
   ): Promise<void> {
     await this.usersRepository.replaceById(id, users);
@@ -144,7 +141,7 @@ export class UsersController {
   @response(204, {
     description: 'Users DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.string('id') id: number): Promise<void> {
     await this.usersRepository.deleteById(id);
   }
 }

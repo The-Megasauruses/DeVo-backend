@@ -105,7 +105,7 @@ export class ProductsController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @param.filter(Products, {exclude: 'where'}) filter?: FilterExcludingWhere<Products>
   ): Promise<Products> {
     return this.productsRepository.findById(id, filter);
@@ -116,7 +116,7 @@ export class ProductsController {
     description: 'Products PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +134,7 @@ export class ProductsController {
     description: 'Products PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @requestBody() products: Products,
   ): Promise<void> {
     await this.productsRepository.replaceById(id, products);
@@ -144,7 +144,7 @@ export class ProductsController {
   @response(204, {
     description: 'Products DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.string('id') id: number): Promise<void> {
     await this.productsRepository.deleteById(id);
   }
 }

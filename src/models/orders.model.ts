@@ -3,6 +3,13 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class Orders extends Entity {
   @property({
+    type: 'number',
+    generated: true,
+    id: true,
+  })
+  id?: number;
+
+  @property({
     type: 'array',
     itemType: 'object',
     required: true,
@@ -17,17 +24,9 @@ export class Orders extends Entity {
 
   @property({
     type: 'string',
-    id: true,
-    generated: true,
-  })
-  id?: string;
-
-  @property({
-    type: 'string',
     required: true,
   })
   status: string;
-
 
   constructor(data?: Partial<Orders>) {
     super(data);
