@@ -2,11 +2,66 @@
   "name": "ecomm-backend",
   "version": "1.0.0",
   "description": "We will be making the backend to an ecommerce website that sells bats. We want users to have permissions based on if they are customers or admin. Customers should have a recenly purchased tab and we want admins to adjust product stock that lives in a database. As a stretch we would like to use socket.io to have a virtual assistant and the website could hold customer carts.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": "16 || 18 || 20"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "posttest": "npm run lint",
+    "premigrate": "npm run build",
+    "migrate": "node ./dist/migrate",
+    "preopenapi-spec": "npm run build",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "prestart": "npm run rebuild",
+    "start": "node -r source-map-support/register .",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Rhett Beardemphl <rhettbeardemphl@hotmail.com>",
+  "license": "",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/boot": "^6.1.2",
+    "@loopback/core": "^5.1.2",
+    "@loopback/repository": "^6.1.2",
+    "@loopback/rest": "^13.1.2",
+    "@loopback/rest-explorer": "^6.1.2",
+    "@loopback/service-proxy": "^6.1.2",
+    "dotenv": "^16.3.1",
+    "loopback-connector-postgresql": "^5.5.2",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^10.1.2",
+    "@loopback/eslint-config": "^14.0.3",
+    "@loopback/testlab": "^6.1.2",
+    "@types/node": "^16.18.40",
+    "eslint": "^8.47.0",
+    "source-map-support": "^0.5.21",
+    "typescript": "~5.1.6"
+  }
 }
