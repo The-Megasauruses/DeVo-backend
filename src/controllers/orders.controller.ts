@@ -23,7 +23,7 @@ import {OrdersRepository} from '../repositories';
 export class OrdersController {
   constructor(
     @repository(OrdersRepository)
-    public ordersRepository : OrdersRepository,
+    public ordersRepository: OrdersRepository,
   ) {}
 
   @post('/orders')
@@ -52,9 +52,7 @@ export class OrdersController {
     description: 'Orders model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Orders) where?: Where<Orders>,
-  ): Promise<Count> {
+  async count(@param.where(Orders) where?: Where<Orders>): Promise<Count> {
     return this.ordersRepository.count(where);
   }
 
@@ -70,9 +68,7 @@ export class OrdersController {
       },
     },
   })
-  async find(
-    @param.filter(Orders) filter?: Filter<Orders>,
-  ): Promise<Orders[]> {
+  async find(@param.filter(Orders) filter?: Filter<Orders>): Promise<Orders[]> {
     return this.ordersRepository.find(filter);
   }
 
@@ -105,8 +101,9 @@ export class OrdersController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
-    @param.filter(Orders, {exclude: 'where'}) filter?: FilterExcludingWhere<Orders>
+    @param.path.string('id') id: number,
+    @param.filter(Orders, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Orders>,
   ): Promise<Orders> {
     return this.ordersRepository.findById(id, filter);
   }
@@ -116,7 +113,7 @@ export class OrdersController {
     description: 'Orders PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +131,7 @@ export class OrdersController {
     description: 'Orders PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.string('id') id: number,
     @requestBody() orders: Orders,
   ): Promise<void> {
     await this.ordersRepository.replaceById(id, orders);
@@ -144,7 +141,7 @@ export class OrdersController {
   @response(204, {
     description: 'Orders DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.string('id') id: number): Promise<void> {
     await this.ordersRepository.deleteById(id);
   }
 }
