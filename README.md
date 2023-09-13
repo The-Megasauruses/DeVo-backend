@@ -1,175 +1,73 @@
-# Ecomm-backend
+# ecomm-backend
 
-We will be making the backend to an ecommerce website that sells a variety of products. We want users to have permissions based on if they are customers or admin. Customers should have a recenly purchased tab and we want admins to adjust product stock that lives in a database. As a stretch we would like to use socket.io to have a virtual assistant and the website could hold customer carts.
+This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
+[initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
 
-## User Stories
+## Install dependencies
 
-1. **As a customer, I want to be able to create an account:**
-   - I can provide my name, email address, and password to sign up.
-   - STRETCH: should receive a confirmation email to verify my account.
+By default, dependencies were installed when this application was generated.
+Whenever dependencies in `package.json` are changed, run the following command:
 
-2. **As a customer, I want to be able to log in to my account:**
-   - I can enter my email and password to access my account.
-   - I should be redirected to my dashboard upon successful login.
+```sh
+npm install
+```
 
-3. **As a customer, I want to view product details:**
-   - I can click on a product to see its detailed information, including price, description, and images.
+To only install resolved dependencies in `package-lock.json`:
 
-4. **As a customer, I want to view my order history:**
-   - I can see a list of all my past orders with details like order date, status, and items ordered.
+```sh
+npm ci
+```
 
-5. **As a customer, I want to leave product reviews:**
-    - STRETCH: I can rate and write reviews for products I have purchased.
-  
-6. **As a customer/admin, I want to be able to chat in real time with a specialist/customer:**
-    - STRETCH: real time chat window.
+## Run the application
 
-7. **As an admin, I want to manage product listings:**
-   - I can add new products with details such as name, price, description, and images.
-   - I can edit or delete existing product listings.
+```sh
+npm start
+```
 
-8. **As an admin, I want to process customer orders:**
-    - I can view incoming orders and mark them as shipped or completed.
-    - STRETCH: I can generate packing slips and shipping labels.
+You can also run `node .` to skip the build step.
 
-## Feature Tasks
+Open http://127.0.0.1:3000 in your browser.
 
-- Install LoopBack Server
-- Set up Authentication
-- Make Schemas
-- Connect users and products to orders
-- Create protected routes
-- Setup PostgreSQL Database
-- Connect PostgreSQL database to LoopBack Server
-- Deployment
+## Rebuild the project
 
-## Acceptance Tests
+To incrementally build the project:
 
-- Verify that users can successfully register by providing valid information
-- As an admin, add a new product and verify its details are correctly displayed on the website
+```sh
+npm run build
+```
 
-## UML
+To force a full build by cleaning up cached artifacts:
 
-<img src='./assets/ecommBackendUml.png'/>
+```sh
+npm run rebuild
+```
 
-## Our Team
+## Fix code style and formatting issues
 
-Raymond Ruazol - Lacey Washington - Rhett Beardemphl
+```sh
+npm run lint
+```
 
-What are the key strengths of each person on the team?
+To automatically fix such issues:
 
-- Raymond's key strengths come from his experience in the field & navigating group environments.
-- Lacey's key strengths are finding creative ways to find information needed to solve complex problems.
-- Rhett's key strengths are connecting user's from the front-end and manipulating database information.
+```sh
+npm run lint:fix
+```
 
-How can you best utilize these strengths in the execution of your project?
+## Other useful commands
 
-All of our strengths center on teamwork and problem solving. Many minds tackling a conflict will allow us to arise to a solution sooner.
+- `npm run migrate`: Migrate database schemas for models
+- `npm run openapi-spec`: Generate OpenAPI spec into a file
 
-In which professional competencies do you each want to develop greater strength?
+## Tests
 
-- Raymond would like to develop his mission and vision alignment.
-- Lacey would like to get better at handling ambiguity and keeping his cool when dealing with vague situations.
-- Rhett would like to farther his leadership skills.
+```sh
+npm test
+```
 
-Knowing that every person in your team needs to understand all aspects of the project, how do you plan to approach the day-to-day work?
+## What's next
 
-At the start of each "get together" we will have a group meeting where we discuss what we will be working on each day and review any problems we might be encountering.
+Please check out [LoopBack 4 documentation](https://loopback.io/doc/en/lb4/) to
+understand how you can continue to add features to this application.
 
-## Conflict Plan
-
-What will be your group’s process to resolve conflict, when it arises?
-
-Fight to the death in Apex Legends. And if that doesn't work... at the start of each "get together" we will make space for people to voice their issues and since we have an uneven number of members we can easily put any conflicts to a vote.
-
-What will your team do if one person is taking over the project and not letting the other members contribute?
-
-We will present the idea at our team meeting and discuss options to stop this acivity from continuing.
-
-How will you approach each other and the challenges of the project knowing that it is impossible for all members to be at the exact same place in understanding and skill level?
-
-Constant communication and our mantra "not everyone can write all of the code but everyone has the right to know all of the code."
-
-How will you raise concerns to members who are not adequately contributing? If your resolution attempts are unsuccessful?
-
-After one group meeting or slack convo about the inadequate contribution we will get our instructor involved.
-
-
-## Communication Plan
-
-What hours will you be available to communicate?
-
-- Rhett
-class times always open
-open besides monday  - thursday in day time hours free after 4:00pm
-friday and saturday nights playing diablo DON'T MESS WITH HIM
-
-- Ray
-flexiblity in schedule
-down for working asyncrinously
-sunday is usally free
-also normal class times are always open for him
-
-- Lacey
-work
-weds - fri working 10am - 6pm CST
-hour commute home so wont be avalible until 7pm CST
-work on sunday
-9am - 6pm CST
-wont be avalibe until 6:30pm CST
-hour commute home so wont be avalible until 7pm CST
-FREE monday and tuesday and saturday all day
-and of course class times. (edited) 
-
-What platforms will you use to communicate (ie. Slack, phone …)?
-
-Slack and cellular devices.
-
-How often will you take breaks?
-
-Every thirty minutes or an hour based on preference we will take a five to ten minute break.
-
-What is your plan if you start to fall behind?
-
-Communicate our group of our workload and issues resolving any specific issues and see how we can collaborate to overcome the obstacle.
-
-How will you communicate after hours and on the weekend?
-
-Refer to schedule.
-
-What is your strategy for ensuring everyone’s voice is heard?
-
-Our 'group meetings'.
-
-## Work Plan
-
-How you will identify tasks, assign tasks, know when they are complete, and manage work in general?
-
-We will utilize GitHub Projects and discuss in detail in our 'group meetings'.
-
-## Open Source
-
-What components of your project will live on GitHub?
-
-Our project management tool and all of our files.
-
-How will you share the repository with your teammates?
-
-We will be in a GitHub Organization.
-
-What is your Git flow?
-
-We will all have our own development branches and we will push them from there into a feature/dev branch which will lead to our main branch.
-
-How many people must review a PR?
-
-Yes, from dev to main we will make GitHub require an extra person to approve the PR.
-
-Who merges PRs?
-
-The person who wrote the code and one other group memeber.
-
-How often will you merge?
-
-From our individual branches to main we would merge as we see fit but we would only merge to main when we complete a new feature.
-
+[![LoopBack](https://github.com/loopbackio/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
