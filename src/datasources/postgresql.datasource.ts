@@ -5,7 +5,7 @@ require('dotenv').config();
 const config = {
   name: 'postgresql',
   connector: 'postgresql',
-  // url: process.env.DATABASE_URL,
+  url: process.env.DATABASE_URL,
   host: 'localhost',
   post: 5432,
   user: 'rpruazol',
