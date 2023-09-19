@@ -9,7 +9,7 @@ export class ProductsRepository extends DefaultCrudRepository<
   ProductsRelations
 > {
   constructor(
-    @inject('datasources.db') dataSource: DbDataSource,
+    @inject('datasources.postgresql') dataSource: DbDataSource,
   ) {
     super(Products, dataSource);
   }

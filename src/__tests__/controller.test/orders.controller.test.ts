@@ -22,7 +22,7 @@ describe('OrdersController', () => {
   let app: RestApplication;
   let client: Client;
 
-  before(async () => {
+  beforeAll(async () => {
     app = new RestApplication();
     // Initialize and bind your controller and repository
     app.controller(OrdersController); // Use the controller class directly
@@ -41,7 +41,7 @@ describe('OrdersController', () => {
     client = supertest.agent(app.restServer.url);
   });
 
-  after(async () => {
+  afterAll(async () => {
     await app.stop();
   });
 

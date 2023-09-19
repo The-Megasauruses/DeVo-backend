@@ -29,9 +29,9 @@
     "openapi-spec": "node ./dist/openapi-spec",
     "prestart": "npm run rebuild",
     "start": "node -r source-map-support/register .",
-    "test": "jest --verbose --coverage",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
-    "rebuild": "npm run clean && npm run build"
+    "rebuild": "npm run clean && npm run build",
+    "test": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
@@ -46,18 +46,11 @@
     "!*/__tests__"
   ],
   "dependencies": {
-    "@loopback/boot": "^6.1.2",
-    "@loopback/core": "^5.1.2",
-    "@loopback/repository": "^6.1.2",
-    "@loopback/rest": "^13.1.2",
-    "@loopback/rest-explorer": "^6.1.2",
-    "@loopback/service-proxy": "^6.1.2",
-    "dotenv": "^16.3.1",
-    "jest-preset-loopback": "^1.0.0",
-    "loopback-connector-postgresql": "^5.5.2",
-    "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@babel/plugin-proposal-decorators": "^7.22.15",
+    "@babel/plugin-syntax-decorators": "^7.22.10",
     "@babel/preset-env": "^7.22.20",
     "@babel/preset-typescript": "^7.22.15",
     "@loopback/build": "^10.1.2",
@@ -71,5 +64,15 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "typescript": "~5.1.6"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "^@myapp/(.*)$": "<rootDir>/src/$1"
+    }
   }
 }

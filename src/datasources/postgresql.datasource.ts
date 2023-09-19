@@ -3,9 +3,12 @@ import {juggler} from '@loopback/repository';
 require('dotenv').config();
 
 const config = {
-  name: 'db',
+  name: 'postgresql',
   connector: 'postgresql',
   url: process.env.DATABASE_URL,
+  host: 'localhost',
+  post: 5432,
+  database: 'ecomm'
 };
 
 // Observe application's life cycle to disconnect the datasource when
@@ -15,11 +18,11 @@ const config = {
 @lifeCycleObserver('datasource')
 export class DbDataSource extends juggler.DataSource
   implements LifeCycleObserver {
-  static dataSourceName = 'db';
+  static dataSourceName = 'postgresql';
   static readonly defaultConfig = config;
 
   constructor(
-    @inject('datasources.config.db', {optional: true})
+    @inject('datasources.config.postgresql', {optional: true})
     dsConfig: object = config,
   ) {
     super(dsConfig);
