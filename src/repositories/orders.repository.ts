@@ -13,7 +13,7 @@ export class OrdersRepository extends DefaultCrudRepository<
   public readonly user: BelongsToAccessor<Users, typeof Orders.prototype.id>;
 
   constructor(
-    @inject('datasources.db') dataSource: DbDataSource, @repository.getter('UsersRepository') protected usersRepositoryGetter: Getter<UsersRepository>,
+    @inject('datasources.postgresql') dataSource: DbDataSource, @repository.getter('UsersRepository') protected usersRepositoryGetter: Getter<UsersRepository>,
   ) {
     super(Orders, dataSource);
     this.user = this.createBelongsToAccessorFor('user', usersRepositoryGetter,);
