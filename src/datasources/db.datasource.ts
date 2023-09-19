@@ -5,7 +5,7 @@ require('dotenv').config();
 const config = {
   name: 'db',
   connector: 'postgresql',
-  url: process.env.DATABASE_URL
+  url: process.env.DATABASE_URL,
 };
 
 // Observe application's life cycle to disconnect the datasource when
