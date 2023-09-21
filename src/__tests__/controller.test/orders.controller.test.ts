@@ -1,50 +1,27 @@
-import {RestApplication, RestBindings, RestServer} from '@loopback/rest';
 import {Client, expect} from '@loopback/testlab';
-import * as supertest from 'supertest';
-import {OrdersController} from '../../controllers/index'; // Import your OrdersController
-import {OrdersRepository} from '../../repositories/index'; // Import your OrdersRepository
-import {createTestDataSource} from '../test-datasource.config';
-
+import {OrdersController} from '../../controllers/index';
+import {OrdersRepository} from '../../repositories/index';
+import {globalSetup, globalTeardown} from '../global';
 
 const createdOrder = {
   order: [
-    { product: 'Product A', quantity: 2, price: 10.99 },
-    { product: 'Product B', quantity: 1, price: 5.99 },
+    {product: 'Product A', quantity: 2, price: 10.99},
+    {product: 'Product B', quantity: 1, price: 5.99},
   ],
   userId: '1',
   status: 'Pending',
 };
-let app: RestApplication;
+
 let client: Client;
 
 describe('OrdersController', () => {
-
   beforeAll(async () => {
-    app = new RestApplication();
+    const setupResult = await globalSetup();
+    setupResult.app.bind('repositories.OrdersRepository').toClass(OrdersRepository);
+    setupResult.app.controller(OrdersController);
 
-
-    const testDataSource = createTestDataSource();
-    app.bind('datasources.postgresql').to(testDataSource);
-
-
-    app.bind('repositories.OrdersRepository').toClass(OrdersRepository);
-
-
-    app.controller(OrdersController);
-
-
-    app.bind(RestBindings.Http.CONTEXT).toDynamicValue(() => {
-      return new RestServer(app, {
-        openApiSpec: {
-          disabled: true,
-        },
-      });
-    });
-
-    await app.start();
-    client = supertest.agent(app.restServer.url);
+    client = setupResult.client;
   });
-
 
   it('should create a new order', async () => {
     const orderData = createdOrder;
@@ -63,17 +40,17 @@ describe('OrdersController', () => {
   it('should update an order', async () => {
     const updatedOrderData = {
       order: [
-        { product: 'Product A', quantity: 2, price: 10.99 },
-        { product: 'Product B', quantity: 1, price: 40.00 },
+        {product: 'Product A', quantity: 2, price: 10.99},
+        {product: 'Product B', quantity: 1, price: 40.00},
       ],
       userId: '1',
       status: 'complete',
     };
 
     await client
-    .put(`/orders/1`)
-    .send(updatedOrderData)
-    .expect(204);
+      .put(`/orders/1`)
+      .send(updatedOrderData)
+      .expect(204);
 
     const response = await client.get(`/orders/1`).expect(200);
 
@@ -82,12 +59,10 @@ describe('OrdersController', () => {
 
   it('should delete an order', async () => {
     await client.delete(`/orders/1`).expect(204);
-
-    // Attempt to fetch the deleted order and ensure it's not found (404)
     await client.get(`/orders/1`).expect(404);
   });
 
   afterAll(async () => {
-    await app.stop();
+    await globalTeardown(); // Call globalTeardown to properly tear down the application
   });
 });

@@ -3,3 +3,4 @@ export * from './ping.controller';
 export * from './products.controller';
 export * from './orders-users.controller';
 export * from './users-orders.controller';
+export * from './user.controller';

@@ -31,7 +31,7 @@
     "start": "node -r source-map-support/register .",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
     "rebuild": "npm run clean && npm run build",
-    "test": "jest --verbose --coverage"
+    "test": "jest --verbose --coverage --detectOpenHandles"
   },
   "repository": {
     "type": "git",
