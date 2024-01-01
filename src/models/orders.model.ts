@@ -22,8 +22,8 @@ export class Orders extends Entity {
   })
   status: string;
 
-  @belongsTo(() => Users)
-  userId: number;
+  @belongsTo(() => Users, {keyTo: 'userid'})
+  userId: string;
 
   constructor(data?: Partial<Orders>) {
     super(data);
