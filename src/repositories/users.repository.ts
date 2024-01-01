@@ -1,7 +1,7 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
+import {Getter, inject} from '@loopback/core';
+import {DefaultCrudRepository, HasManyRepositoryFactory, repository} from '@loopback/repository';
 import {DbDataSource} from '../datasources';
-import {Users, UsersRelations, Orders} from '../models';
+import {Orders, Users, UsersRelations} from '../models';
 import {OrdersRepository} from './orders.repository';
 
 export class UsersRepository extends DefaultCrudRepository<
@@ -13,7 +13,7 @@ export class UsersRepository extends DefaultCrudRepository<
   public readonly orders: HasManyRepositoryFactory<Orders, typeof Users.prototype.id>;
 
   constructor(
-    @inject('datasources.db') dataSource: DbDataSource, @repository.getter('OrdersRepository') protected ordersRepositoryGetter: Getter<OrdersRepository>,
+    @inject('datasources.postgresql') dataSource: DbDataSource, @repository.getter('OrdersRepository') protected ordersRepositoryGetter: Getter<OrdersRepository>,
   ) {
     super(Users, dataSource);
     this.orders = this.createHasManyRepositoryFactoryFor('orders', ordersRepositoryGetter,);
