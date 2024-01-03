@@ -5,7 +5,9 @@ require('dotenv').config();
 const config = {
   name: 'postgresql',
   connector: 'postgresql',
-  url: process.env.DATABASE_URL
+  url: process.env.DATABASE_URL,
+  ssl: true, // Enable SSL
+  rejectUnauthorized: false // Disable certificate validation (use with caution)
 };
 
 // Observe application's life cycle to disconnect the datasource when
